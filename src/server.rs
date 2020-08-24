@@ -1,9 +1,11 @@
 use actix_files::Files;
+use actix_rt::System;
+use actix_web::middleware::Logger;
 use actix_web::{dev::Server, web, App, HttpServer};
+
+use std::process::{Child, Command};
 use std::sync::mpsc;
 use std::sync::{Arc, RwLock};
-
-use actix_rt::System;
 
 use crate::handler::{listen, upload};
 
@@ -11,6 +13,7 @@ pub fn server(data: Arc<RwLock<State>>, tx: mpsc::Sender<Server>) -> std::io::Re
     let mut sys = System::new("amnesia-localhost");
     let server = HttpServer::new(move || {
         App::new()
+            .wrap(Logger::default())
             .data(data.clone())
             .service(
                 web::scope("/api")
@@ -27,13 +30,22 @@ pub fn server(data: Arc<RwLock<State>>, tx: mpsc::Sender<Server>) -> std::io::Re
 
 #[derive(Debug)]
 pub struct State {
-    pub interface: String,
-    pub pid: Option<String>,
+    pub spawn_tshark: Command,
+    pub tshark_child: Option<Child>,
 }
 
 impl State {
     pub fn new(interface: String) -> Self {
-        let pid = None;
-        State { interface, pid }
+        let mut spawn_tshark = Command::new("tshark");
+        spawn_tshark
+            .arg("-i")
+            .arg(interface)
+            .arg("-w")
+            .arg("/tmp/amnesia/amnesia.pcapng");
+        let tshark_child: Option<Child> = None;
+        State {
+            spawn_tshark,
+            tshark_child,
+        }
     }
 }

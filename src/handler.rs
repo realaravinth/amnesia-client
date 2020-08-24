@@ -5,17 +5,12 @@ use crate::server::State;
 
 pub async fn listen(data: web::Data<Arc<RwLock<State>>>) -> impl Responder {
     let mut guard = data.write().unwrap();
-    if let Some(process) = &mut guard.pid {
-        let command = format!(r#" kill {}"#, process);
-        let _ = run_script::run_script!(command);
-        guard.pid = None
+    if let Some(process) = &mut guard.tshark_child {
+        //        let _kill_tshark = uu
+        process.kill().unwrap();
+        guard.tshark_child = None
     } else {
-        let command = format!(
-            r#" tshark -i {} -w /tmp/amnesia/amnesia.pcapng "#,
-            guard.interface
-        );
-        let child = run_script::spawn_script!(command).unwrap();
-        *&mut guard.pid = Some(child.id().to_string());
+        guard.tshark_child = Some(guard.spawn_tshark.spawn().expect("Failed to start tshark"));
     }
 
     HttpResponse::Ok()

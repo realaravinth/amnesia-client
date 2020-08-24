@@ -1,5 +1,9 @@
-extern crate pnet;
-use pnet::datalink::{self, NetworkInterface};
+extern crate pretty_env_logger;
+#[macro_use]
+extern crate log;
+
+use pretty_env_logger::env_logger::{from_env, Env};
+
 use std::env;
 use std::sync::mpsc;
 use std::sync::{Arc, RwLock};
@@ -14,30 +18,29 @@ use crate::utils::{cleanup, setup};
 #[actix_rt::main]
 async fn main() -> std::io::Result<()> {
     let setup_dir = setup();
+    from_env(Env::default().default_filter_or("info")).init();
 
-    let interface_name = env::args().nth(1).unwrap();
-    let interface_names_match = |iface: &NetworkInterface| iface.name == interface_name;
-    // Find the network interface with the provided name
-    let interfaces = datalink::interfaces();
-    {
-        let _ = interfaces
-            .into_iter()
-            .filter(interface_names_match)
-            .next()
-            .unwrap();
-    }
-    let (tx, rx) = mpsc::channel();
+    let interface_name = env::args().nth(1).unwrap_or_else(|| {
+        error!("Please enter a network interface");
+        panic!();
+    });
+    info!("Setting up working directory at /tmp/amnesia");
+
+    setup_dir.await.unwrap_or_else(|error| {
+        error!("Error encountered while setting up working directory at /tmp/");
+        error!("{}", error);
+        panic!();
+    });
 
     let data = Arc::new(RwLock::new(State::new(interface_name.to_string())));
-
-    setup_dir.await.expect(
-        "[Error]: Setup failed. Couldn't create dir at /tmp/. Do you have write permissions?",
-    );
+    let (tx, rx) = mpsc::channel();
     thread::spawn(move || {
         let _ = server(data, tx);
     });
     let srv = rx.recv().unwrap();
     srv.await?;
+    info!("Shutting down server...");
     cleanup().await?;
+    info!("Server shutdown");
     Ok(())
 }

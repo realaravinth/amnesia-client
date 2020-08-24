@@ -1,4 +1,3 @@
-use std::fs;
 use std::io;
 
 pub async fn upload() {
@@ -6,9 +5,11 @@ pub async fn upload() {
 }
 
 pub async fn setup() -> Result<(), io::Error> {
-    fs::DirBuilder::new()
+    use std::fs::{self, DirBuilder};
+    DirBuilder::new()
         .recursive(true)
         .create("/tmp/amnesia/http-stream")?;
+    fs::File::create("/tmp/amnesia/amnesia.pcapng").unwrap();
     Ok(())
 }
 
