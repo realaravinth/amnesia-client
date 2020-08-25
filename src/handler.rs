@@ -17,7 +17,6 @@ pub async fn listen(data: web::Data<Arc<RwLock<State>>>) -> impl Responder {
 }
 
 pub async fn upload() -> impl Responder {
-    use crate::utils::upload;
-    // TODO write upload functionality
+    unimplemented!("upload handler");
     HttpResponse::Ok()
 }
