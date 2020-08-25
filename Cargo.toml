@@ -14,3 +14,19 @@ tokio = { version = "0.2", features = ["fs"] }
 pnet = "0.26.0"
 log = "0.4"
 pretty_env_logger = "0.4"
+
+
+
+[package.metadata.deb]
+maintainer = "realaravinth <realaravinth@batsense.net>"
+copyright = "2020, realaravinth <realaravinth@batsense.net>"
+license-file = ["LICENSE", "4"]
+extended-description = """\
+A web interface for packet captures
+"""
+depends = "$auto, tshark"
+section = "utility"
+priority = "optional"
+assets = [
+    ["target/release/amnesia-client", "usr/bin/", "755"],
+]
