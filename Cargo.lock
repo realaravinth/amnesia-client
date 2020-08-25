@@ -311,9 +311,12 @@ dependencies = [
  "actix-files",
  "actix-rt",
  "actix-web",
+ "futures",
+ "lazy_static",
  "log 0.4.11",
  "pnet",
  "pretty_env_logger",
+ "regex",
  "tokio",
 ]
 

@@ -2,6 +2,10 @@ extern crate pretty_env_logger;
 #[macro_use]
 extern crate log;
 
+extern crate regex;
+#[macro_use]
+extern crate lazy_static;
+
 use pretty_env_logger::env_logger::{from_env, Env};
 
 use std::env;

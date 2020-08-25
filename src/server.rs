@@ -31,21 +31,31 @@ pub fn server(data: Arc<RwLock<State>>, tx: mpsc::Sender<Server>) -> std::io::Re
 #[derive(Debug)]
 pub struct State {
     pub spawn_tshark: Command,
+    pub extract_http_stream: Command,
     pub tshark_child: Option<Child>,
 }
 
 impl State {
     pub fn new(interface: String) -> Self {
         let mut spawn_tshark = Command::new("tshark");
-        spawn_tshark
-            .arg("-i")
-            .arg(interface)
-            .arg("-w")
-            .arg("/tmp/amnesia/amnesia.pcapng");
+        spawn_tshark.args(&[
+            "-i",
+            &interface,
+            "-w",
+            "/tmp/amnesia/capture/amnesia.pcapng",
+        ]);
+        let mut extract_http_stream = Command::new("tshark");
+        extract_http_stream.args(&[
+            "--export-objects",
+            r#"http,/tmp/amnesia/http-stream"#,
+            "-r",
+            "/tmp/amnesia/capture/amnesia.pcapng",
+        ]);
         let tshark_child: Option<Child> = None;
         State {
             spawn_tshark,
             tshark_child,
+            extract_http_stream,
         }
     }
 }
