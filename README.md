@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/realaravinth/amnesia-client.svg?branch=master)](https://travis-ci.com/realaravinth/amnesia-client)
+[![License: GPLv2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 # Amnesia-Client
 
 **WARNING: The author tested this program several times on both VMs
@@ -67,7 +69,7 @@ To find your IP address, you may run:
 your IP is the value following `INET` against your network interface.
 See highlighted value in the img
 
-![ifconfig output](/img/ip.png)
+![ifconfig output](./img/ip.png)
 
 
 
