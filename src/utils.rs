@@ -1,24 +1,18 @@
+use regex::Regex;
 use std::fs::{metadata, read_dir, read_to_string, DirBuilder};
 use std::io;
 use std::path::Path;
 
-use regex::Regex;
+//use actix_web::client::{Client, ClientRequest};
 
 lazy_static! {
     static ref RE: Regex = Regex::new(r"loadQuestion\(*").unwrap();
 }
 
-use crate::server::State;
-pub async fn upload() -> Result<(), io::Error> {
-    // Todo use actix client
-    unimplemented!("use actix client");
-    Ok(())
-}
-
-async fn prepare_payload<'a>() -> Result<String, io::Error> {
+pub async fn prepare_payload<'a>() -> Result<String, io::Error> {
     let dir = Path::new("/tmp/amnesia/http-stream");
     metadata(dir).unwrap();
-    let contents: String = read_dir(dir)
+    let payload: String = read_dir(dir)
         .unwrap()
         .map(|file| {
             let x = file.unwrap().file_name();
@@ -30,7 +24,8 @@ async fn prepare_payload<'a>() -> Result<String, io::Error> {
             contents
         })
         .collect();
-    Ok(contents)
+    //    let payload = ;
+    Ok(payload.to_owned())
 }
 
 pub async fn message_telegram() -> Result<(), io::Error> {

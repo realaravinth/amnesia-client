@@ -20,7 +20,7 @@ constructor() {
 	  method: 'GET',
 	};
 	
-	let url="/upload" 
+	let url="/api/upload" 
 	this.setState({"uploadStatus" : "Uploading"});
 	fetch(url, requestOptions)
 	  .then(response => response.text())
@@ -62,6 +62,10 @@ constructor() {
 			<div className="formGroup">
 				 <input className="btn" id={this.state.listening} type="submit" value={this.state.listening} />
 			</div>
+		  </form> 
+
+		  <form className="formWrap" onSubmit={this.handleSubmitUpload}>
+
 			<div className="formGroup">
 				 <input className="btn" id={this.state.listening? "listening" : null} type="submit" value={this.state.uploadStatus} />
 			</div>
