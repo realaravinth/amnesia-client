@@ -9,14 +9,14 @@ dependencies = [
  "actix-http 0.2.11",
  "actix-rt 0.2.6",
  "actix_derive 0.4.0",
- "bitflags 1.2.1",
+ "bitflags",
  "bytes 0.4.12",
  "crossbeam-channel 0.3.9",
  "derive_more 0.14.1",
  "futures 0.1.29",
  "hashbrown 0.3.1",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "parking_lot 0.8.0",
  "smallvec 0.6.13",
  "tokio-codec",
@@ -36,13 +36,13 @@ dependencies = [
  "actix-http 1.0.1",
  "actix-rt 1.1.1",
  "actix_derive 0.5.0",
- "bitflags 1.2.1",
+ "bitflags",
  "bytes 0.5.6",
  "crossbeam-channel 0.4.3",
  "derive_more 0.99.9",
  "futures 0.3.5",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "parking_lot 0.10.2",
  "pin-project",
  "smallvec 1.4.2",
@@ -60,7 +60,7 @@ checksum = "9f2c11af4b06dc935d8e1b1491dad56bfb32febc49096a91e773f8535c176453"
 dependencies = [
  "bytes 0.4.12",
  "futures 0.1.29",
- "log 0.4.11",
+ "log",
  "tokio-codec",
  "tokio-io",
 ]
@@ -71,11 +71,11 @@ version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "09e55f0a5c2ca15795035d90c46bd0e73a5123b72f68f12596d6ba5282051380"
 dependencies = [
- "bitflags 1.2.1",
+ "bitflags",
  "bytes 0.5.6",
  "futures-core",
  "futures-sink",
- "log 0.4.11",
+ "log",
  "tokio",
  "tokio-util 0.2.0",
 ]
@@ -94,7 +94,7 @@ dependencies = [
  "either",
  "futures 0.1.29",
  "http 0.1.21",
- "log 0.4.11",
+ "log",
  "tokio-current-thread",
  "tokio-tcp",
  "trust-dns-resolver 0.11.1",
@@ -114,7 +114,7 @@ dependencies = [
  "either",
  "futures 0.3.5",
  "http 0.2.1",
- "log 0.4.11",
+ "log",
  "trust-dns-proto 0.18.0-alpha.2",
  "trust-dns-resolver 0.18.0-alpha.2",
 ]
@@ -128,12 +128,12 @@ dependencies = [
  "actix-http 1.0.1",
  "actix-service 1.0.6",
  "actix-web 2.0.0",
- "bitflags 1.2.1",
+ "bitflags",
  "bytes 0.5.6",
  "derive_more 0.99.9",
  "futures-core",
  "futures-util",
- "log 0.4.11",
+ "log",
  "mime",
  "mime_guess",
  "percent-encoding 2.1.0",
@@ -153,7 +153,7 @@ dependencies = [
  "actix-threadpool 0.1.2",
  "actix-utils 0.4.7",
  "base64 0.10.1",
- "bitflags 1.2.1",
+ "bitflags",
  "brotli2",
  "bytes 0.4.12",
  "chrono",
@@ -171,7 +171,7 @@ dependencies = [
  "indexmap",
  "language-tags",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "mime",
  "percent-encoding 2.1.0",
  "rand 0.7.3",
@@ -201,7 +201,7 @@ dependencies = [
  "actix-threadpool 0.3.3",
  "actix-utils 1.0.6",
  "base64 0.11.0",
- "bitflags 1.2.1",
+ "bitflags",
  "brotli2",
  "bytes 0.5.6",
  "chrono",
@@ -221,7 +221,7 @@ dependencies = [
  "indexmap",
  "language-tags",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "mime",
  "percent-encoding 2.1.0",
  "pin-project",
@@ -258,7 +258,7 @@ dependencies = [
  "derive_more 0.99.9",
  "futures 0.3.5",
  "httparse",
- "log 0.4.11",
+ "log",
  "mime",
  "time",
  "twoway",
@@ -285,7 +285,7 @@ checksum = "23224bb527e204261d0291102cb9b52713084def67d94f7874923baefe04ccf7"
 dependencies = [
  "bytes 0.4.12",
  "http 0.1.21",
- "log 0.4.11",
+ "log",
  "regex",
  "serde",
  "string",
@@ -299,7 +299,7 @@ checksum = "9d7a10ca4d94e8c8e7a87c5173aba1b97ba9a6563ca02b0e1cd23531093d3ec8"
 dependencies = [
  "bytestring",
  "http 0.2.1",
- "log 0.4.11",
+ "log",
  "regex",
  "serde",
 ]
@@ -344,7 +344,7 @@ dependencies = [
  "actix-server-config",
  "actix-service 0.4.2",
  "futures 0.1.29",
- "log 0.4.11",
+ "log",
  "mio",
  "net2",
  "num_cpus",
@@ -368,7 +368,7 @@ dependencies = [
  "actix-utils 1.0.6",
  "futures-channel",
  "futures-util",
- "log 0.4.11",
+ "log",
  "mio",
  "mio-uds",
  "num_cpus",
@@ -417,7 +417,7 @@ dependencies = [
  "actix-server-config",
  "actix-service 0.4.2",
  "futures 0.1.29",
- "log 0.4.11",
+ "log",
  "net2",
  "tokio-reactor",
  "tokio-tcp",
@@ -433,7 +433,7 @@ dependencies = [
  "actix-rt 1.1.1",
  "actix-server 1.0.3",
  "actix-service 1.0.6",
- "log 0.4.11",
+ "log",
  "socket2",
 ]
 
@@ -446,7 +446,7 @@ dependencies = [
  "derive_more 0.15.0",
  "futures 0.1.29",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "num_cpus",
  "parking_lot 0.9.0",
  "threadpool",
@@ -461,7 +461,7 @@ dependencies = [
  "derive_more 0.99.9",
  "futures-channel",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "num_cpus",
  "parking_lot 0.11.0",
  "threadpool",
@@ -480,7 +480,7 @@ dependencies = [
  "derive_more 0.99.9",
  "either",
  "futures 0.3.5",
- "log 0.4.11",
+ "log",
 ]
 
 [[package]]
@@ -494,7 +494,7 @@ dependencies = [
  "bytes 0.4.12",
  "either",
  "futures 0.1.29",
- "log 0.4.11",
+ "log",
  "tokio-current-thread",
  "tokio-timer",
 ]
@@ -508,11 +508,11 @@ dependencies = [
  "actix-codec 0.2.0",
  "actix-rt 1.1.1",
  "actix-service 1.0.6",
- "bitflags 1.2.1",
+ "bitflags",
  "bytes 0.5.6",
  "either",
  "futures 0.3.5",
- "log 0.4.11",
+ "log",
  "pin-project",
  "slab",
 ]
@@ -540,7 +540,7 @@ dependencies = [
  "encoding_rs",
  "futures 0.1.29",
  "hashbrown 0.6.3",
- "log 0.4.11",
+ "log",
  "mime",
  "net2",
  "parking_lot 0.9.0",
@@ -576,7 +576,7 @@ dependencies = [
  "encoding_rs",
  "futures 0.3.5",
  "fxhash",
- "log 0.4.11",
+ "log",
  "mime",
  "net2",
  "pin-project",
@@ -681,9 +681,8 @@ dependencies = [
  "futures 0.3.5",
  "http 0.2.1",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "mime",
- "pnet",
  "pretty_env_logger",
  "rand 0.5.6",
  "regex",
@@ -743,7 +742,7 @@ dependencies = [
  "bytes 0.4.12",
  "derive_more 0.15.0",
  "futures 0.1.29",
- "log 0.4.11",
+ "log",
  "mime",
  "percent-encoding 2.1.0",
  "rand 0.7.3",
@@ -767,7 +766,7 @@ dependencies = [
  "bytes 0.5.6",
  "derive_more 0.99.9",
  "futures-core",
- "log 0.4.11",
+ "log",
  "mime",
  "percent-encoding 2.1.0",
  "rand 0.7.3",
@@ -804,12 +803,6 @@ name = "base64"
 version = "0.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b41b7ea54a0c9d92199de89e20e58d49f02f8e699814ef3fdf266f6f748d15c7"
-
-[[package]]
-name = "bitflags"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4f67931368edf3a9a51d29886d245f1c3db2f1ef0dcc9e35ff70341b78c10d23"
 
 [[package]]
 name = "bitflags"
@@ -897,7 +890,7 @@ version = "0.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ddfc5b9aa5d4507acaf872de71051dfd0e309860e88966e1051e462a077aac4f"
 dependencies = [
- "bitflags 1.2.1",
+ "bitflags",
 ]
 
 [[package]]
@@ -906,7 +899,7 @@ version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4344512281c643ae7638bbabc3af17a11307803ec8f0fcad9fae512a8bf36467"
 dependencies = [
- "bitflags 1.2.1",
+ "bitflags",
 ]
 
 [[package]]
@@ -1086,7 +1079,7 @@ checksum = "44533bbbb3bb3c1fa17d9f2e4e38bbbaf8396ba82193c4cb1b6445d711445d36"
 dependencies = [
  "atty",
  "humantime",
- "log 0.4.11",
+ "log",
  "regex",
  "termcolor",
 ]
@@ -1144,7 +1137,7 @@ version = "0.3.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2e9763c69ebaae630ba35f74888db465e49e259ba1bc0eda7d06f4a067615d82"
 dependencies = [
- "bitflags 1.2.1",
+ "bitflags",
  "fuchsia-zircon-sys",
 ]
 
@@ -1282,12 +1275,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "aaf91faf136cb47367fa430cd46e37a788775e7fa104f8b4bcb3861dc389b724"
 
 [[package]]
-name = "glob"
-version = "0.2.11"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8be18de09a56b60ed0edf84bc9df007e30040691af7acd1c41874faac5895bfb"
-
-[[package]]
 name = "h2"
 version = "0.1.26"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1299,7 +1286,7 @@ dependencies = [
  "futures 0.1.29",
  "http 0.1.21",
  "indexmap",
- "log 0.4.11",
+ "log",
  "slab",
  "string",
  "tokio-io",
@@ -1475,15 +1462,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "ipnetwork"
-version = "0.16.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b8eca9f51da27bc908ef3dd85c21e1bbba794edaf94d7841e37356275b82d31e"
-dependencies = [
- "serde",
-]
-
-[[package]]
 name = "itoa"
 version = "0.4.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1548,15 +1526,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "28247cc5a5be2f05fbcd76dd0cf2c7d3b5400cb978a28042abcd4fa0b3f8261c"
 dependencies = [
  "scopeguard",
-]
-
-[[package]]
-name = "log"
-version = "0.3.9"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "e19e8d5c34a3e0e2223db8e060f9e8264aeeb5c5fc64a4ee9965c062211c024b"
-dependencies = [
- "log 0.4.11",
 ]
 
 [[package]]
@@ -1648,7 +1617,7 @@ dependencies = [
  "iovec",
  "kernel32-sys",
  "libc",
- "log 0.4.11",
+ "log",
  "miow",
  "net2",
  "slab",
@@ -1888,95 +1857,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8b870d8c151b6f2fb93e84a13146138f05d02ed11c7e7c54f8826aaaf7c9f184"
 
 [[package]]
-name = "pnet"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c62df42dcd72f6f2a658bcf38509f1027df1440ac85f1af4badbe034418302dc"
-dependencies = [
- "ipnetwork",
- "pnet_base",
- "pnet_datalink",
- "pnet_packet",
- "pnet_sys",
- "pnet_transport",
-]
-
-[[package]]
-name = "pnet_base"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b7cd5f7e15220afa66b0a9a62841ea10089f39dcaa1c29752c0b22dfc03111b5"
-
-[[package]]
-name = "pnet_datalink"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7318ae1d6e0b7fa1e49933233c9473f2b72d3d18b97e70e2716c6415dde5f915"
-dependencies = [
- "ipnetwork",
- "libc",
- "pnet_base",
- "pnet_sys",
- "winapi 0.2.8",
-]
-
-[[package]]
-name = "pnet_macros"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bbbd5c52c6e04aa720400f9c71cd0e8bcb38cd13421d5caabd9035e9efa47de9"
-dependencies = [
- "regex",
- "syntex",
- "syntex_syntax",
-]
-
-[[package]]
-name = "pnet_macros_support"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "daf9c5c0c36766d0a4da9ab268c0700771b8ec367b9463fd678109fa28463c5b"
-dependencies = [
- "pnet_base",
-]
-
-[[package]]
-name = "pnet_packet"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "89e26a864d71d0ac51a549cf40283c44ed1b8f98168545638a4730ef9f560283"
-dependencies = [
- "glob",
- "pnet_base",
- "pnet_macros",
- "pnet_macros_support",
- "syntex",
-]
-
-[[package]]
-name = "pnet_sys"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "73f0de0c52609f157b25d79ce24d9016ab1bbf10cde761397200d634a833872c"
-dependencies = [
- "libc",
- "winapi 0.2.8",
- "ws2_32-sys",
-]
-
-[[package]]
-name = "pnet_transport"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6712ab76534340494d849e3c51c64a6261e4b451337b7c05bd3681e384c48b10"
-dependencies = [
- "libc",
- "pnet_base",
- "pnet_packet",
- "pnet_sys",
-]
-
-[[package]]
 name = "ppv-lite86"
 version = "0.2.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1989,7 +1869,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "926d36b9553851b8b0005f1275891b392ee4d2d833852c417ed025477350fb9d"
 dependencies = [
  "env_logger",
- "log 0.4.11",
+ "log",
 ]
 
 [[package]]
@@ -2256,12 +2136,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4c691c0e608126e00913e33f0ccf3727d5fc84573623b8d65b2df340b5201783"
 
 [[package]]
-name = "rustc-serialize"
-version = "0.3.24"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dcf128d1287d2ea9d80910b5f1120d0b8eede3fbf1abe91c40d39ea7d51e6fda"
-
-[[package]]
 name = "rustc_version"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2433,65 +2307,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "syntex"
-version = "0.42.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0a30b08a6b383a22e5f6edc127d169670d48f905bb00ca79a00ea3e442ebe317"
-dependencies = [
- "syntex_errors",
- "syntex_syntax",
-]
-
-[[package]]
-name = "syntex_errors"
-version = "0.42.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "04c48f32867b6114449155b2a82114b86d4b09e1bddb21c47ff104ab9172b646"
-dependencies = [
- "libc",
- "log 0.3.9",
- "rustc-serialize",
- "syntex_pos",
- "term",
- "unicode-xid 0.0.3",
-]
-
-[[package]]
-name = "syntex_pos"
-version = "0.42.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3fd49988e52451813c61fecbe9abb5cfd4e1b7bb6cdbb980a6fbcbab859171a6"
-dependencies = [
- "rustc-serialize",
-]
-
-[[package]]
-name = "syntex_syntax"
-version = "0.42.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7628a0506e8f9666fdabb5f265d0059b059edac9a3f810bda077abb5d826bd8d"
-dependencies = [
- "bitflags 0.5.0",
- "libc",
- "log 0.3.9",
- "rustc-serialize",
- "syntex_errors",
- "syntex_pos",
- "term",
- "unicode-xid 0.0.3",
-]
-
-[[package]]
-name = "term"
-version = "0.4.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fa63644f74ce96fbeb9b794f66aff2a52d601cbd5e80f4b97123e3899f4570f1"
-dependencies = [
- "kernel32-sys",
- "winapi 0.2.8",
-]
-
-[[package]]
 name = "termcolor"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2594,7 +2409,7 @@ checksum = "57fc868aae093479e3131e3d165c93b1c7474109d13c90ec0dda2a1bbfff0674"
 dependencies = [
  "bytes 0.4.12",
  "futures 0.1.29",
- "log 0.4.11",
+ "log",
 ]
 
 [[package]]
@@ -2606,7 +2421,7 @@ dependencies = [
  "crossbeam-utils 0.7.2",
  "futures 0.1.29",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "mio",
  "num_cpus",
  "parking_lot 0.9.0",
@@ -2677,7 +2492,7 @@ checksum = "e2a0b10e610b39c38b031a2fcab08e4b82f16ece36504988dcbd81dbba650d82"
 dependencies = [
  "bytes 0.4.12",
  "futures 0.1.29",
- "log 0.4.11",
+ "log",
  "mio",
  "tokio-codec",
  "tokio-io",
@@ -2693,7 +2508,7 @@ dependencies = [
  "bytes 0.5.6",
  "futures-core",
  "futures-sink",
- "log 0.4.11",
+ "log",
  "pin-project-lite",
  "tokio",
 ]
@@ -2707,7 +2522,7 @@ dependencies = [
  "bytes 0.5.6",
  "futures-core",
  "futures-sink",
- "log 0.4.11",
+ "log",
  "pin-project-lite",
  "tokio",
 ]
@@ -2719,7 +2534,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6d79ca061b032d6ce30c660fded31189ca0b9922bf483cd70759f13a2d86786c"
 dependencies = [
  "cfg-if",
- "log 0.4.11",
+ "log",
  "tracing-core",
 ]
 
@@ -2744,7 +2559,7 @@ dependencies = [
  "futures 0.1.29",
  "idna 0.1.5",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "rand 0.6.5",
  "smallvec 0.6.13",
  "socket2",
@@ -2769,7 +2584,7 @@ dependencies = [
  "futures 0.3.5",
  "idna 0.2.0",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "rand 0.7.3",
  "smallvec 1.4.2",
  "socket2",
@@ -2788,7 +2603,7 @@ dependencies = [
  "futures 0.1.29",
  "ipconfig",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "lru-cache",
  "resolv-conf",
  "smallvec 0.6.13",
@@ -2807,7 +2622,7 @@ dependencies = [
  "futures 0.3.5",
  "ipconfig",
  "lazy_static",
- "log 0.4.11",
+ "log",
  "lru-cache",
  "resolv-conf",
  "smallvec 1.4.2",
@@ -2863,12 +2678,6 @@ name = "unicode-segmentation"
 version = "1.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e83e153d1053cbb5a118eeff7fd5be06ed99153f00dbcd8ae310c5fb2b22edc0"
-
-[[package]]
-name = "unicode-xid"
-version = "0.0.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "36dff09cafb4ec7c8cf0023eb0b686cb6ce65499116a12201c9e11840ca01beb"
 
 [[package]]
 name = "unicode-xid"
