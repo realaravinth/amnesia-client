@@ -19,7 +19,9 @@ traffic and send the capture to a command and control server (checkout
 Pre-compiled packages are available at the release section of this. You
 may download and install them with:
 
-`$ sudo apt instlal -f ./<name-of-the-package>`
+```
+$ sudo apt instlal -f ./name-of-the-package
+```
 
 Don't forget to substitute the package name at `<name-of-the-package>`
 
@@ -29,8 +31,10 @@ wireshark/tshark, then please allow it.
 
 1. See [dependencies](#dependencies) and install them
 2. After installing `cargo`, run:
-`$ git clone https://github.com/realaravinth/amnesia-client`
-3. `$ cd amnesia-client && cargo build --release`
+```
+$ git clone https://github.com/realaravinth/amnesia-client
+$ cd amnesia-client && cargo build --release
+```
 
 You'll find the release build at `target/release/`
 
@@ -49,22 +53,30 @@ The name of the internet facing network interface should be based as a
 parameter to the program. Running the following command will list all
 network interfaces on your machine:
 
-`$ sudo ifconfig`
+```
+$ sudo ifconfig
+```
 
 Ethernet devices will begin with an 'e' and wireless interfaces will
 begin with an 'w'. Assuming your's is `wlan0`, run the following command
 to start the program:
 
-`$ amnesia-client wlan0`
+```
+$ amnesia-client wlan0
+```
 
-By default, the program binds itself to port 8000. 
+By default, the program binds itself to port 7000. 
 So the web interface can be accessed at
 
-`<your-IP-address>:8000`
+```
+ your-IP-address:7000
+```
 
 To find your IP address, you may run:
 
-`$ sudo ifconfig`
+```
+$ sudo ifconfig
+```
 
 your IP is the value following `INET` against your network interface.
 See highlighted value in the img
