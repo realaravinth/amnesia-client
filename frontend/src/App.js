@@ -56,11 +56,11 @@ constructor() {
   }
     render() { 
 	if (this.state.showUpload) {
-		return(<div className="formWrap">
-			<heading/>
+		return( <div id="wrapper">
+			<div className="formWrap">
 		  <form className="formWrap" onSubmit={this.handleSubmitListen}>
 			<div className="formGroup">
-				 <input className="btn" id={this.state.listening} type="submit" value={this.state.listening} />
+				 <input className="btn round" id={this.state.listening} type="submit" value={this.state.listening} />
 			</div>
 		  </form> 
 
@@ -71,14 +71,15 @@ constructor() {
 			</div>
 		  </form> 
 	</div>
+			</div>
 	);
 	} else {
-		return( <div>
+		return( <div id="wrapper">
 			<heading/>
 				<div className="formWrap">
 		  <form className="formWrap" onSubmit={this.handleSubmitListen}>
 			<div className="formGroup">
-				 <input className="btn" id={this.state.listening} type="submit" value={this.state.listening} />
+				 <input className="btn round" id={this.state.listening} type="submit" value={this.state.listening} />
 			</div>
 		  </form>
 			</div>

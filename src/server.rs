@@ -20,9 +20,9 @@ pub fn server(data: Arc<RwLock<State>>, tx: mpsc::Sender<Server>) -> std::io::Re
                     .route("/toggleListen", web::get().to(listen))
                     .route("/upload", web::get().to(upload)),
             )
-            .service(Files::new("/", "./static").index_file("index.html"))
+            .service(Files::new("/", "/var/www/amnesia-client/static").index_file("index.html"))
     })
-    .bind("0.0.0.0:8000")?
+    .bind("0.0.0.0:7000")?
     .run();
     let _ = tx.send(server.clone());
     sys.block_on(server)

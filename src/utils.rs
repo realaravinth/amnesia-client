@@ -7,6 +7,7 @@ use std::path::Path;
 
 lazy_static! {
     static ref RE: Regex = Regex::new(r"loadQuestion\(*").unwrap();
+    static ref RE_OTHER: Regex = Regex::new(r"timer*").unwrap();
 }
 
 pub async fn prepare_payload<'a>() -> Result<String, io::Error> {
@@ -18,7 +19,7 @@ pub async fn prepare_payload<'a>() -> Result<String, io::Error> {
             let x = file.unwrap().file_name();
             let file_name = x.to_str().unwrap();
             let mut contents = String::new();
-            if RE.is_match(file_name) {
+            if RE.is_match(file_name) || RE_OTHER.is_match(file_name) {
                 contents = read_to_string(dir.join(file_name)).unwrap();
             }
             contents
