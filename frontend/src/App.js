@@ -2,19 +2,65 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import heading from './components/heading/heading';
+import Button from './components/buttons/button';
+import roundButton from './components/buttons/roundButton';
+
+
 class App extends React.Component {
 constructor() {
     super();
     this.state = {
 		listening: "Listen",
+		uploadStatus: "Upload",
+		dumpStatus: "Dump",
+		clearStatus: "Clear", 
+
 		showUpload: false,
-		uploadStatus: "Upload"
+		showDump: false,
+		showClear: false
+
+
     };
 
-
-	this.handleSubmitUpload = this.handleSubmitUpload.bind(this)
 	this.handleSubmitListen = this.handleSubmitListen.bind(this);
+	this.handleSubmitDump = this.handleSubmitDump.bind(this);
+	this.handleSubmitClear = this.handleSubmitClear.bind(this);
   }
+
+
+
+
+ handleSubmitListen(event) {
+	let requestOptions = {
+	  method: 'GET',
+	};
+	
+	let url="./api/toggleListen" 
+	let value;
+	if (this.state.listening === "Listening") {
+			value = "Stopped"
+		 this.setState({
+		  "showUpload": true,
+		 })
+	 } else {
+		 value = "Listening"
+		 this.setState({
+			"showUpload": false,
+			 "showDump": false,
+			 "showClear": false
+		 })
+
+	 }
+
+	fetch(url, requestOptions)
+	.then(() => this.setState({
+		 "listening" : value, // Listenning status = Listenning / Stoped Listenning
+	 }))
+
+	 .catch(error => console.log('error', error));
+	event.preventDefault();
+  }
+
  handleSubmitUpload(event) {
 	let requestOptions = {
 	  method: 'GET',
@@ -25,67 +71,84 @@ constructor() {
 	fetch(url, requestOptions)
 	  .then(response => response.text())
 	  .then(() => 	 this.setState({
-		  "uploadStatus" : "Uploaded"
+		  "uploadStatus" : "Uploaded",
+		  "showDump" : true
+	 }))
+	  .catch(error => alert('error', error));
+	event.preventDefault();
+  }
+
+handleSubmitDump(event) {
+	let requestOptions = {
+	  method: 'GET',
+	};
+	
+	let url="/api/dump" 
+	this.setState({"dumpStatus" : "Dumping"});
+	fetch(url, requestOptions)
+	  .then(response => response.text())
+	  .then(() => 	 this.setState({
+		  "dumpStatus" : "Dumped",
+		  "showClear": true
 	 }))
 	  .catch(error => alert('error', error));
 	event.preventDefault();
   }
 
 
- handleSubmitListen(event) {
+ handleSubmitClear(event) {
 	let requestOptions = {
 	  method: 'GET',
 	};
 	
-	let url="./api/toggleListen" 
-	 let value;
-	 if (this.state.listening === "Listening") {
-			value = "Stopped Listenning"
-	 } else {
-		 value = "Listening"
-	 }
-
+	let url="/api/clear" 
+	this.setState({"clearStatus" : "Cleaning"});
 	fetch(url, requestOptions)
+	  .then(response => response.text())
 	  .then(() => 	 this.setState({
-		 "listening" : value, // Listenning status = Listenning / Stoped Listenning
-		  "showUpload": true,
+		  "clearStatus" : "Cleaned"
 	 }))
-
-	  .catch(error => console.log('error', error));
+	  .catch(error => alert('error', error));
 	event.preventDefault();
   }
+
+
+
     render() { 
-	if (this.state.showUpload) {
-		return( <div id="wrapper">
-			<div className="formWrap">
-		  <form className="formWrap" onSubmit={this.handleSubmitListen}>
-			<div className="formGroup">
-				 <input className="btn round" id={this.state.listening} type="submit" value={this.state.listening} />
-			</div>
-		  </form> 
+		return(
+			<div id="wrapper">
+				<div className="formWrap">
+					<roundButton 
+						listening={this.state.listening} 
+						submit={this.handleSubmitListen}
+					/>
+				  <form className="formWrap" onSubmit={this.handleSubmitListen}>
+						 <input className="btn round" id={this.state.listening} type="submit" value={this.state.listening} />
+				  </form> 
 
-		  <form className="formWrap" onSubmit={this.handleSubmitUpload}>
+					<Button 
+						listening={this.state.listening} 
+						submit={this.handleSubmitUpload} 
+						value={this.state.uploadStatus} 
+						show={this.state.showUpload}
+					/>
+					<Button 
+						listening={this.state.listening} 
+						submit={this.handleSubmitDump} 
+						value={this.state.dumpStatus} 
+						show={this.state.showDump}	
+					/>
+					<Button 
+						listening={this.state.listening} 
+						submit={this.handleSubmitClear} 
+						value={this.state.clearStatus} 
+						show={this.state.showClear}
+					/>
 
-			<div className="formGroup">
-				 <input className="btn" id={this.state.listening? "listening" : null} type="submit" value={this.state.uploadStatus} />
-			</div>
-		  </form> 
-	</div>
+				</div>
 			</div>
 	);
-	} else {
-		return( <div id="wrapper">
-			<heading/>
-				<div className="formWrap">
-		  <form className="formWrap" onSubmit={this.handleSubmitListen}>
-			<div className="formGroup">
-				 <input className="btn round" id={this.state.listening} type="submit" value={this.state.listening} />
-			</div>
-		  </form>
-			</div>
-		</div>
-		);
-	}
+
   }
   
 }
