@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import heading from './components/heading/heading';
 import Button from './components/buttons/button';
-import roundButton from './components/buttons/roundButton';
+import RoundButton from './components/buttons/roundButton';
 
 
 class App extends React.Component {
@@ -23,6 +23,7 @@ constructor() {
     };
 
 	this.handleSubmitListen = this.handleSubmitListen.bind(this);
+	this.handleSubmitUpload = this.handleSubmitUpload.bind(this);
 	this.handleSubmitDump = this.handleSubmitDump.bind(this);
 	this.handleSubmitClear = this.handleSubmitClear.bind(this);
   }
@@ -45,7 +46,7 @@ constructor() {
 	 } else {
 		 value = "Listening"
 		 this.setState({
-			"showUpload": false,
+			"showUpload": true,
 			 "showDump": false,
 			 "showClear": false
 		 })
@@ -61,7 +62,7 @@ constructor() {
 	event.preventDefault();
   }
 
- handleSubmitUpload(event) {
+handleSubmitUpload(event) {
 	let requestOptions = {
 	  method: 'GET',
 	};
@@ -72,11 +73,13 @@ constructor() {
 	  .then(response => response.text())
 	  .then(() => 	 this.setState({
 		  "uploadStatus" : "Uploaded",
-		  "showDump" : true
+		  "showDump": true
 	 }))
 	  .catch(error => alert('error', error));
 	event.preventDefault();
   }
+
+
 
 handleSubmitDump(event) {
 	let requestOptions = {
@@ -118,20 +121,18 @@ handleSubmitDump(event) {
 		return(
 			<div id="wrapper">
 				<div className="formWrap">
-					<roundButton 
+					<RoundButton 
 						listening={this.state.listening} 
 						submit={this.handleSubmitListen}
 					/>
-				  <form className="formWrap" onSubmit={this.handleSubmitListen}>
-						 <input className="btn round" id={this.state.listening} type="submit" value={this.state.listening} />
-				  </form> 
-
 					<Button 
 						listening={this.state.listening} 
 						submit={this.handleSubmitUpload} 
 						value={this.state.uploadStatus} 
-						show={this.state.showUpload}
+						show={this.state.showUpload}	
 					/>
+
+				  
 					<Button 
 						listening={this.state.listening} 
 						submit={this.handleSubmitDump} 
