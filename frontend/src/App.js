@@ -43,6 +43,12 @@ constructor() {
 
 	 } else if  (this.state.listening === "Stopped") {
 		 value = "Listening";
+		 this.setState({
+			uploadStatus: "Upload",
+			dumpStatus: "Dump",
+			clearStatus: "Clear", 
+
+		 })
 
 	 } else {
 		 value = "Listening";
