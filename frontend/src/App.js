@@ -40,29 +40,33 @@ constructor() {
 	let value;
 	if (this.state.listening === "Listening") {
 		value = "Stopped";
-	 this.setState({
-		  "showUpload": true,
-		 });
 
 	 } else if  (this.state.listening === "Stopped") {
 		 value = "Listening";
-		 this.setState({
-			"showUpload": false,
-			 "showDump": false,
-			 "showClear": false
-		 });
 
 	 } else {
 		 value = "Listening";
 	 }
-
 	fetch(url, requestOptions)
 	.then(() => this.setState({
 		 "listening" : value, // Listenning status = Listenning / Stoped Listenning
-		"showUpload" : true,
 	 }))
+	 .then(() => {
+			if (this.state.listening === "Stopped") {
+				 this.setState({
+					"showUpload" : true,
+				 })
+			 } else {
+				this.setState({
+					"showUpload" : false,
+					"showDump": false,
+					"showClear": false,
+				 })
+		 }
+	 })
 
 	 .catch(error => console.log('error', error));
+	 
 	event.preventDefault();
   }
 
