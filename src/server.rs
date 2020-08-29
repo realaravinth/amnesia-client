@@ -7,7 +7,7 @@ use std::process::{Child, Command};
 use std::sync::mpsc;
 use std::sync::{Arc, RwLock};
 
-use crate::handler::{dump, listen, upload};
+use crate::handler::{clear, dump, listen, upload};
 
 pub fn server(data: Arc<RwLock<State>>, tx: mpsc::Sender<Server>) -> std::io::Result<()> {
     let mut sys = System::new("amnesia-localhost");
@@ -19,7 +19,8 @@ pub fn server(data: Arc<RwLock<State>>, tx: mpsc::Sender<Server>) -> std::io::Re
                 web::scope("/api")
                     .route("/toggleListen", web::get().to(listen))
                     .route("/upload", web::get().to(upload))
-                    .route("/dump", web::get().to(dump)),
+                    .route("/dump", web::get().to(dump))
+                    .route("/clear", web::get().to(clear)),
             )
             .service(Files::new("/", "/var/www/amnesia-client/static").index_file("index.html"))
     })

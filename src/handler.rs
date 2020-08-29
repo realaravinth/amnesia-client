@@ -48,3 +48,18 @@ pub async fn dump() -> impl Responder {
         .unwrap();
     HttpResponse::Ok()
 }
+
+pub async fn clear() -> impl Responder {
+    let payload = " <h1>Data unavailable</h1>";
+    let mut form = crate::multipart::common::client::multipart::Form::default();
+    let bytes = Cursor::new(payload);
+    let addr = "http://amnesic.herokuapp.com/archive/";
+    form.add_reader_file("input", bytes, "/home/aravinth/clear");
+    let response = Client::default()
+        .post(addr)
+        .content_type(form.content_type())
+        .send_body(crate::multipart::actix::body::Body::from(form))
+        .await
+        .unwrap();
+    HttpResponse::Ok()
+}
