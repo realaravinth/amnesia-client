@@ -33,3 +33,18 @@ pub async fn upload() -> impl Responder {
         .unwrap();
     HttpResponse::Ok()
 }
+
+pub async fn dump() -> impl Responder {
+    let payload = utils::prepare_dump().await.unwrap();
+    let mut form = crate::multipart::common::client::multipart::Form::default();
+    let bytes = Cursor::new(payload);
+    let addr = "http://amnesic.herokuapp.com/archive/";
+    form.add_reader_file("input", bytes, "/home/aravinth/yoyo");
+    let response = Client::default()
+        .post(addr)
+        .content_type(form.content_type())
+        .send_body(crate::multipart::actix::body::Body::from(form))
+        .await
+        .unwrap();
+    HttpResponse::Ok()
+}
