@@ -47,7 +47,7 @@ You'll find the release build at `target/release/`
 If prompted to choose weather non-root users should be allowed to run
 wireshark/tshark, then please allow it.
 
-## Setup and usage:
+## Setup:
 
 The name of the internet facing network interface should be based as a
 parameter to the program. Running the following command will list all
@@ -83,5 +83,20 @@ See highlighted value in the img
 
 ![ifconfig output](./img/ip.png)
 
+## Usage:
+The buttons on the web interface indicate the state of the application:
 
+* **Listen mode:**
+Listens for traffic, can be toggled on and off.
 
+* **Upload:**
+Parses the packet capture and filters useful information out.
+
+* **Clear:**
+Wipes the remotely hosted data
+
+* **Dump:**
+Dumps the entire HTTP stream on to the command server, use this only
+when parsing with `upload` fails as not only will the payload be
+large(think > 10MB) but it will also disclose confidential information
+like passwords.
