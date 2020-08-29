@@ -61,6 +61,7 @@ constructor() {
 			if (this.state.listening === "Stopped") {
 				 this.setState({
 					"showUpload" : true,
+					"showClear": true,
 				 })
 			 } else {
 				this.setState({
