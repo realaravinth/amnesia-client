@@ -35,27 +35,31 @@ constructor() {
 	let requestOptions = {
 	  method: 'GET',
 	};
-	
+
 	let url="./api/toggleListen" 
 	let value;
 	if (this.state.listening === "Listening") {
-			value = "Stopped"
-		 this.setState({
+		value = "Stopped";
+	 this.setState({
 		  "showUpload": true,
-		 })
-	 } else {
-		 value = "Listening"
+		 });
+
+	 } else if  (this.state.listening === "Stopped") {
+		 value = "Listening";
 		 this.setState({
-			"showUpload": true,
+			"showUpload": false,
 			 "showDump": false,
 			 "showClear": false
-		 })
+		 });
 
+	 } else {
+		 value = "Listening";
 	 }
 
 	fetch(url, requestOptions)
 	.then(() => this.setState({
 		 "listening" : value, // Listenning status = Listenning / Stoped Listenning
+		"showUpload" : true,
 	 }))
 
 	 .catch(error => console.log('error', error));
@@ -118,6 +122,7 @@ handleSubmitDump(event) {
 
 
     render() { 
+		console.log(this.state.showUpload);
 		return(
 			<div id="wrapper">
 				<div className="formWrap">

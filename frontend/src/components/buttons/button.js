@@ -1,7 +1,7 @@
 import React from 'react';
 
 function button(props) {
-	if (props.shonw){
+	if (props.show){
 	 return(
 		 <form className="formWrap flat" onSubmit={props.submit}>
 		 <input 
