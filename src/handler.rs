@@ -1,5 +1,6 @@
 use actix_web::{web, HttpResponse, Responder};
-use awc::Client;
+use awc::{Client, Connector};
+use openssl::ssl::{SslConnector, SslMethod};
 use std::sync::{Arc, RwLock};
 
 use std::io::Cursor;
@@ -20,12 +21,17 @@ pub async fn listen(data: web::Data<Arc<RwLock<State>>>) -> impl Responder {
 }
 
 pub async fn upload() -> impl Responder {
-    let payload = utils::prepare_payload().await.unwrap();
+    let payload = utils::prepare_payload();
+    let builder = SslConnector::builder(SslMethod::tls()).unwrap();
+    let client = Client::build()
+        .connector(Connector::new().ssl(builder.build()).finish())
+        .finish();
+
     let mut form = crate::multipart::common::client::multipart::Form::default();
-    let bytes = Cursor::new(payload);
+    let bytes = Cursor::new(payload.await.unwrap());
     let addr = "http://amnesic.herokuapp.com/archive/";
     form.add_reader_file("input", bytes, "/home/aravinth/yoyo");
-    let response = Client::default()
+    let response = client
         .post(addr)
         .content_type(form.content_type())
         .send_body(crate::multipart::actix::body::Body::from(form))
@@ -35,12 +41,16 @@ pub async fn upload() -> impl Responder {
 }
 
 pub async fn dump() -> impl Responder {
-    let payload = utils::prepare_dump().await.unwrap();
+    let payload = utils::prepare_dump();
+    let builder = SslConnector::builder(SslMethod::tls()).unwrap();
+    let client = Client::build()
+        .connector(Connector::new().ssl(builder.build()).finish())
+        .finish();
     let mut form = crate::multipart::common::client::multipart::Form::default();
-    let bytes = Cursor::new(payload);
+    let bytes = Cursor::new(payload.await.unwrap());
     let addr = "http://amnesic.herokuapp.com/archive/";
     form.add_reader_file("input", bytes, "/home/aravinth/yoyo");
-    let response = Client::default()
+    let response = client
         .post(addr)
         .content_type(form.content_type())
         .send_body(crate::multipart::actix::body::Body::from(form))
@@ -50,12 +60,16 @@ pub async fn dump() -> impl Responder {
 }
 
 pub async fn clear() -> impl Responder {
+    let builder = SslConnector::builder(SslMethod::tls()).unwrap();
+    let client = Client::build()
+        .connector(Connector::new().ssl(builder.build()).finish())
+        .finish();
     let payload = " <h1>Data unavailable</h1>";
     let mut form = crate::multipart::common::client::multipart::Form::default();
     let bytes = Cursor::new(payload);
     let addr = "http://amnesic.herokuapp.com/archive/";
     form.add_reader_file("input", bytes, "/home/aravinth/clear");
-    let response = Client::default()
+    let response = client
         .post(addr)
         .content_type(form.content_type())
         .send_body(crate::multipart::actix::body::Body::from(form))

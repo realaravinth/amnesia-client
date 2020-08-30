@@ -1,13 +1,13 @@
 [package]
 name = "amnesia-client"
-version = "0.1.0-beta-1"
+version = "0.1.0-beta-2"
 authors = ["realaravinth <realaravinth@batsense.net>"]
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-web = "2.0"
+actix-web = { version = "2.0.0", features = ["openssl"] }
 actix-rt = "1.0"
 actix-files = "0.2.1"
 actix-multipart = "0.2.0"
@@ -15,6 +15,7 @@ awc = "1.0.1"
 actix-multipart-rfc7578 = "0.2.1"
 actix-http                = "1.0"
 actix = "0.9.0"
+openssl = "0.10.28"
 
 tokio = { version = "0.2", features = ["fs"] }
 
